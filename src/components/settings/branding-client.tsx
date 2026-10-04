@@ -119,7 +119,7 @@ export function BrandingClient({
               maxLength={30}
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Vocero"
+              placeholder="Kweekly CRM"
               className="max-w-xs"
             />
           </div>

@@ -44,6 +44,7 @@ export default async function AuthLayout({
           )}
         </div>
         {children}
+        <p className="mt-6 text-center text-xs text-text-3">Un producto de Kinetia</p>
       </div>
     </main>
   );

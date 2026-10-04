@@ -47,12 +47,12 @@
     --bubble-out-border: var(--accent-soft);
     --bubble-out-text: var(--text);
 
-    /* Acento (default: azul Vocero; el white-label lo sobreescribe) */
-    --accent: #0d5bff;
-    --accent-hover: #0a4de6;
-    --accent-soft: #d3e2ff;
+    /* Acento (default: azul Kweekly; el white-label lo sobreescribe) */
+    --accent: #0057ff;
+    --accent-hover: #0049d6;
+    --accent-soft: #d1e1ff;
     --accent-tint: #ebf1ff;
-    --accent-text: #0038d8;
+    --accent-text: #003eb8;
     --accent-fg: #ffffff;
     /* El acento como TINTA (una hora, un enlace) y como anillo de foco. En
        claro son el acento mismo; en oscuro, sus variantes aclaradas: el
@@ -140,13 +140,13 @@
     --bubble-in: #173d2c;
     --bubble-in-border: #2a5e45;
 
-    /* Acento: respaldo con el azul Vocero calculado para este fondo; el
+    /* Acento: respaldo con el azul Kweekly calculado para este fondo; el
        white-label lo recalcula (ver resolveAccentSet en lib/branding). */
-    --accent: #256bff;
-    --accent-hover: #4883ff;
-    --accent-soft: #1f3f82;
-    --accent-tint: #1e3567;
-    --accent-text: #6f9eff;
+    --accent: #1a68ff;
+    --accent-hover: #3e80ff;
+    --accent-soft: #204285;
+    --accent-tint: #1e3768;
+    --accent-text: #77a5ff;
     --accent-fg: #ffffff;
     --accent-ink: var(--accent-text);
     --ring: var(--accent-hover);

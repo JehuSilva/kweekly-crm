@@ -45,10 +45,9 @@ export type Branding = {
 };
 
 export const DEFAULT_BRANDING: Branding = {
-  name: "Vocero",
-  // El azul eléctrico de vocerocrm.com: la instancia recién instalada se ve
-  // igual que la landing. Una agencia lo cambia en Configuración → Marca.
-  accent: "#0d5bff",
+  name: "Kweekly CRM",
+  // Identidad inicial de Kweekly; cada negocio conserva su personalización.
+  accent: "#0057ff",
   currency: DEFAULT_CURRENCY,
   favicon: null,
 };
@@ -59,6 +58,10 @@ export const DEFAULT_BRANDING: Branding = {
  * quien quiera un CRM más discreto.
  */
 export const ACCENT_PRESETS: Record<string, { label: string; set: AccentSet }> = {
+  "#0057ff": {
+    label: "Azul Kweekly",
+    set: { accent: "#0057ff", hover: "#0049d6", soft: "#d1e1ff", tint: "#ebf1ff", text: "#003eb8", fg: "#ffffff" },
+  },
   "#0d5bff": {
     label: "Azul Vocero",
     set: { accent: "#0d5bff", hover: "#0a4de6", soft: "#d3e2ff", tint: "#ebf1ff", text: "#0038d8", fg: "#ffffff" },
@@ -183,7 +186,15 @@ function darkAccentSet(accentHex: string, r: DarkRecipe): AccentSet {
   ) {
     base = mix(base, WHITE, 0.1);
   }
-  const tint = mix(base, r.bg, r.tint);
+  let tint = mix(base, r.bg, r.tint);
+  // Mantener visible la selección con el azul de Kweekly y colores personalizados.
+  while (r === PAGE_DARK && contrast(tint, r.bg) < 1.27 && luminance(tint) < 0.95) {
+    tint = mix(tint, WHITE, 0.01);
+  }
+  let soft = mix(base, r.bg, r.soft);
+  while (r === PAGE_DARK && contrast(soft, r.bg) < 1.52 && luminance(soft) < 0.95) {
+    soft = mix(soft, WHITE, 0.01);
+  }
   let text = mix(base, WHITE, r.text);
   while (contrast(text, tint) < 4.5 && luminance(text) < 0.95) {
     text = mix(text, WHITE, 0.1);
@@ -191,7 +202,7 @@ function darkAccentSet(accentHex: string, r: DarkRecipe): AccentSet {
   return {
     accent: rgbToHex(base),
     hover: rgbToHex(mix(base, WHITE, 0.16)),
-    soft: rgbToHex(mix(base, r.bg, r.soft)),
+    soft: rgbToHex(soft),
     tint: rgbToHex(tint),
     text: rgbToHex(text),
     fg: inkOn(base),
